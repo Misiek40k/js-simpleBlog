@@ -6,7 +6,9 @@ const titleClickHandler = (event) => {
     const clickedElement = event.currentTarget;
     const activeLinks = document.querySelectorAll('.titles a.active');
     const activeArticles = document.querySelectorAll('.posts .post.active');
-
+    const articleSelector = clickedElement.getAttribute('href');
+    const targetArticle = document.querySelector(articleSelector);
+  
     /* remove class 'active' from all article links  */
 
     for (let activeLink of activeLinks) {
@@ -24,10 +26,10 @@ const titleClickHandler = (event) => {
     }
 
     /* get 'href' attribute from the clicked link */
-
     /* find the correct article using the selector (value of 'href' attribute) */
-
     /* add class 'active' to the correct article */
+
+    targetArticle.classList.add('active');
 }
 
 const links = document.querySelectorAll('.titles a');
