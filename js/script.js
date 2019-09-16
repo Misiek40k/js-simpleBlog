@@ -2,6 +2,7 @@
 
 const titleClickHandler = (event) => {
 
+    event.preventDefault();
     const clickedElement = event.currentTarget;
     const activeLinks = document.querySelectorAll('.titles a.active');
     const activeArticles = document.querySelectorAll('.posts .post.active');
