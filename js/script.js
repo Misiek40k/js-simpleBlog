@@ -20,7 +20,7 @@ const titleClickHandler = (event) => {
     }
 
     targetArticle.classList.add('active');
-}
+};
 
 const links = document.querySelectorAll('.titles a');
 
