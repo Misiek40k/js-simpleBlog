@@ -26,12 +26,6 @@ const titleClickHandler = (event) => {
     targetArticle.classList.add('active');
 }
 
-const links = document.querySelectorAll('.titles a');
-
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
-}
-
 const generateTitleLinks = () => {
     const titleList = document.querySelector(optTitleListSelector);
     const articles = document.querySelectorAll(optArticleSelector);
@@ -43,10 +37,17 @@ const generateTitleLinks = () => {
     for (let article of articles) {
         const articleId = article.getAttribute('id');
         const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-        const linkHTML = `<li><a href="#" id="${articleId}"><span>${articleTitle}</span></a></li>`;
+        const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
         html += linkHTML;
     }
+    
     titleList.insertAdjacentHTML('beforeend', html);
+
+    const links = document.querySelectorAll('.titles a');
+
+    for (let link of links) {
+        link.addEventListener('click', titleClickHandler);
+    }
 }
 
 generateTitleLinks();
