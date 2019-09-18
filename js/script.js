@@ -52,29 +52,20 @@ const generateTitleLinks = () => {
 };
 
 const generateTags = () => {
-    /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
 
-    /* START LOOP: for every article: */
+    for (let article of articles) {
+        const articleTags = article.querySelector(optArticleTagsSelector);
+        const tags = article.getAttribute('data-tags');
+        const tagsArr = tags.split(' ');
+        let html = '';
 
-    /* find tags wrapper */
-
-    /* make html variable with empty string */
-
-    /* get tags from data-tags attribute */
-
-    /* split tags into array */
-
-    /* START LOOP: for each tag */
-
-    /* generate HTML of the link */
-
-    /* add generated code to html variable */
-
-    /* END LOOP: for each tag */
-
-    /* insert HTML of all the links into the tags wrapper */
-
-    /* END LOOP: for every article: */
+        for (let tag of tagsArr) {
+            const tagHtml = `<li><a href="#tag-${tag}">${tag}</a></li>`;
+            html += `${tagHtml} `;
+        }
+        articleTags.innerHTML = html;
+    }
 };
 
 generateTitleLinks();
