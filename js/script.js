@@ -27,9 +27,9 @@ function titleClickHandler(event) {
     targetArticle.classList.add('active');
 }
 
-const generateTitleLinks = () => {
+const generateTitleLinks = (customselector = '') => {
     const titleList = document.querySelector(optTitleListSelector);
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector + customselector);
 
     let html = '';
 
@@ -84,7 +84,8 @@ function tagClickHandler(event) {
     for (let link of tagLinks) {
         link.classList.add('active');
     }
-    /* execute function "generateTitleLinks" with article selector as argument */
+
+    generateTitleLinks(`[data-tags~="${tag}"]`);
 }
 
 const addClickListenersToTags = () => {
