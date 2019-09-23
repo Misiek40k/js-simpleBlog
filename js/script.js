@@ -106,15 +106,43 @@ const generateAuthors = () => {
 
         let html = '';
 
-        const authorHtml = `<a href="#tag-${author}">${author}</a>`;
+        const authorHtml = `<a href="#author-${author}">${author}</a>`;
         html += `${authorHtml} `;
 
         articleAuthor.innerHTML = html;
     }
 };
 
+function authorClickHandler(event) {
+
+    event.preventDefault();
+    const clickedElement = this;
+    const href = clickedElement.getAttribute('href');
+    const author = href.replace('#author-', '');
+    const activeLinks = document.querySelectorAll('a.active');
+    const authorLinks = document.querySelectorAll(`a[href="${href}"]`);
+
+    for (let link of activeLinks) {
+        link.classList.remove('active');
+    }
+
+    for (let link of authorLinks) {
+        link.classList.add('active');
+    }
+
+    generateTitleLinks(`[data-author="${author}"]`);
+}
+
+const addClickListenersToAuthors = () => {
+    const links = document.querySelectorAll(`a[href^="#author-"]`);
+
+    for (let link of links) {
+        link.addEventListener('click', authorClickHandler);
+    }
+};
 
 generateTitleLinks();
 generateTags();
 addClickListenersToTags();
 generateAuthors();
+addClickListenersToAuthors();
