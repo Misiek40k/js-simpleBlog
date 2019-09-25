@@ -75,10 +75,7 @@ const generateTags = () => {
         articleTags.innerHTML = html;
     }
 
-    /* [NEW] find list of tags in right column */
     const tagList = document.querySelector('.tags');
-
-    /* [NEW] add html from allTags to tagList */
     tagList.innerHTML = allTags.join(' ');
 };
 
