@@ -53,6 +53,10 @@ const generateTitleLinks = (customselector = '') => {
     }
 };
 
+const calculateTagsParams = (tags) => {
+
+};
+
 const generateTags = () => {
 
     let allTags = {};
@@ -78,6 +82,9 @@ const generateTags = () => {
         }
         articleTags.innerHTML = html;
     }
+
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
 
     for (let tag in allTags) {
         allTagsHtml += `<li><a href="#tag-${tag}">${tag} (${allTags[tag]})</a></li>`;
