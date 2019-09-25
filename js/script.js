@@ -55,7 +55,9 @@ const generateTitleLinks = (customselector = '') => {
 
 const generateTags = () => {
 
-    let allTags = [];
+    let allTags = {};
+    let allTagsHtml = '';
+    const tagList = document.querySelector(optTagsListSelector);
     const articles = document.querySelectorAll(optArticleSelector);
 
     for (let article of articles) {
@@ -68,15 +70,19 @@ const generateTags = () => {
             const tagHtml = `<li><a href="#tag-${tag}">${tag}</a></li>`;
             html += `${tagHtml} `;
 
-            if (allTags.indexOf(tagHtml) == -1) {
-                allTags.push(tagHtml);
+            if (!Object.prototype.hasOwnProperty.call(allTags, tag)) {
+                allTags[tag] = 1;
+            } else {
+                allTags[tag]++;
             }
         }
         articleTags.innerHTML = html;
     }
 
-    const tagList = document.querySelector('.tags');
-    tagList.innerHTML = allTags.join(' ');
+    for (let tag in allTags) {
+        allTagsHtml += `<li><a href="#tag-${tag}">${tag} (${allTags[tag]})</a></li>`;
+    }
+    tagList.innerHTML = allTagsHtml;
 };
 
 function tagClickHandler(event) {
