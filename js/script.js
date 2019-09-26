@@ -74,11 +74,7 @@ const generateTags = () => {
             const tagHtml = `<li><a href="#tag-${tag}">${tag}</a></li>`;
             html += `${tagHtml} `;
 
-            if (!Object.prototype.hasOwnProperty.call(allTags, tag)) {
-                allTags[tag] = 1;
-            } else {
-                allTags[tag]++;
-            }
+            (!Object.prototype.hasOwnProperty.call(allTags, tag)) ? (allTags[tag] = 1) : (allTags[tag]++);
         }
         articleTags.innerHTML = html;
     }
