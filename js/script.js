@@ -6,6 +6,8 @@ const optTitleListSelector = '.titles';
 const optArticleTagsSelector = '.post-tags .list';
 const optArticleAuthorSelector = '.post-author';
 const optTagsListSelector = '.list.tags';
+const optCloudClassCount = 5;
+const optCloudClassPrefix = 'tag-size-';
 
 function titleClickHandler(event) {
 
@@ -59,12 +61,16 @@ const calculateTagsParams = (tags) => {
         min: 9999
     };
 
-    for(let tag in tags) {
+    for (let tag in tags) {
         params.max = Math.max(tags[tag], params.max);
         params.min = Math.min(tags[tag], params.max);
     }
 
     return params;
+};
+
+const calculateTagClass = (count, params) => {
+
 };
 
 const generateTags = () => {
@@ -90,9 +96,10 @@ const generateTags = () => {
     }
 
     const tagsParams = calculateTagsParams(allTags);
+    const tagLinkClass = calculateTagClass(allTags[tag], tagsParams);
 
     for (let tag in allTags) {
-        allTagsHtml += `<li><a href="#tag-${tag}">${tag} (${allTags[tag]})</a></li>`;
+        allTagsHtml += `<li><a href="#tag-${tag}" class="${tagLinkClass}">${tag} (${allTags[tag]})</a></li>`;
     }
     tagList.innerHTML = allTagsHtml;
 };
