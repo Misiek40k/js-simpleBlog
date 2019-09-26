@@ -54,7 +54,18 @@ const generateTitleLinks = (customselector = '') => {
 };
 
 const calculateTagsParams = (tags) => {
+    const params = {
+        max: 0,
+        min: 9999
+    };
 
+    for(let tag in tags) {
+        params.max = Math.max(tags[tag], params.max);
+        params.min = Math.min(tags[tag], params.max);
+        console.log(`${tag} is used ${tags[tag]} times`);
+    }
+
+    return params;
 };
 
 const generateTags = () => {
