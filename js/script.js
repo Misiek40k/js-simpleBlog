@@ -62,7 +62,6 @@ const calculateTagsParams = (tags) => {
     for(let tag in tags) {
         params.max = Math.max(tags[tag], params.max);
         params.min = Math.min(tags[tag], params.max);
-        console.log(`${tag} is used ${tags[tag]} times`);
     }
 
     return params;
@@ -91,7 +90,6 @@ const generateTags = () => {
     }
 
     const tagsParams = calculateTagsParams(allTags);
-    console.log('tagsParams:', tagsParams);
 
     for (let tag in allTags) {
         allTagsHtml += `<li><a href="#tag-${tag}">${tag} (${allTags[tag]})</a></li>`;
