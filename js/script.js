@@ -8,6 +8,7 @@ const optArticleAuthorSelector = '.post-author';
 const optTagsListSelector = '.list.tags';
 const optCloudClassCount = 5;
 const optCloudClassPrefix = 'tag-size-';
+const optAuthorListSelector = '.list.authors';
 const optListItemClass = 'item';
 
 function titleClickHandler(event) {
@@ -136,7 +137,11 @@ const addClickListenersToTags = () => {
 };
 
 const generateAuthors = () => {
+
+    let allAuthors = {};
+    let allAuthorsHtml = '';
     const articles = document.querySelectorAll(optArticleSelector);
+    const authorList = document.querySelector(optAuthorListSelector);
 
     for (let article of articles) {
         const articleAuthor = article.querySelector(optArticleAuthorSelector);
@@ -147,8 +152,15 @@ const generateAuthors = () => {
         const authorHtml = `<a href="#author-${author}">${author}</a>`;
         html += `${authorHtml} `;
 
+        (!Object.prototype.hasOwnProperty.call(allAuthors, author)) ? (allAuthors[author] = 1) : (allAuthors[author]++);
         articleAuthor.innerHTML = html;
     }
+
+    for (let author in allAuthors) {
+        allAuthorsHtml += `<li><a href="#author-${author}">${author} (${allAuthors[author]})</a></li> `;
+    }
+
+    authorList.innerHTML = allAuthorsHtml;
 };
 
 function authorClickHandler(event) {
