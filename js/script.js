@@ -8,6 +8,7 @@ const optArticleAuthorSelector = '.post-author';
 const optTagsListSelector = '.list.tags';
 const optCloudClassCount = 5;
 const optCloudClassPrefix = 'tag-size-';
+const optListItemClass = 'item';
 
 function titleClickHandler(event) {
 
@@ -101,7 +102,7 @@ const generateTags = () => {
 
     for (let tag in allTags) {
         const tagLinkClass = calculateTagClass(allTags[tag], tagsParams);
-        allTagsHtml += `<li><a href="#tag-${tag}" class="${optCloudClassPrefix}${tagLinkClass}">${tag} (${allTags[tag]})</a></li>`;
+        allTagsHtml += `<li class="${optListItemClass} ${optCloudClassPrefix}${tagLinkClass}"><a href="#tag-${tag}">${tag}</a></li> `;
     }
     tagList.innerHTML = allTagsHtml;
 };

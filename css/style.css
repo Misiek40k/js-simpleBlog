@@ -76,6 +76,14 @@ body {
   padding: 0;
 }
 
+.list.tags .item {
+  display: inline-block;
+}
+
+.list.tags .item a {
+  text-decoration: none;
+}
+
 .list .active {
   font-weight: bold;
 }
@@ -113,5 +121,29 @@ body {
 
 .post-tags p {
   margin: 0 10px 0 0;
+}
+
+/* Cloud */
+.tag-size-1 {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.tag-size-2 {
+  font-size: 16px;
+}
+
+.tag-size-3 {
+  font-size: 20px;
+}
+
+.tag-size-4 {
+  font-size: 24px;
+  font-style: bold;
+}
+
+.tag-size-5 {
+  font-size: 28px;
+  font-style: bold;
 }
 /*# sourceMappingURL=style.css.map */

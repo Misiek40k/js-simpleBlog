@@ -85,6 +85,16 @@ body {
     margin: 0;
     padding: 0;
 
+    &.tags{
+        .item {
+            display: inline-block;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+
     .active {
         font-weight: bold;
     }
@@ -128,4 +138,29 @@ body {
     p {
         margin: 0 10px 0 0;
     }
+}
+
+/* Cloud */
+
+.tag-size-1 {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.tag-size-2 {
+    font-size: 16px;
+}
+
+.tag-size-3 {
+    font-size: 20px;
+}
+
+.tag-size-4 {
+    font-size: 24px;
+    font-style: bold;
+}
+
+.tag-size-5 {
+    font-size: 28px;
+    font-style: bold;
 }
