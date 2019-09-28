@@ -70,7 +70,8 @@ const calculateTagsParams = (tags) => {
 };
 
 const calculateTagClass = (count, params) => {
-
+    const classNumber = Math.floor((count - params.min) / (params.max - params.min) * optCloudClassCount + 1);
+    return classNumber;
 };
 
 const generateTags = () => {
@@ -96,10 +97,11 @@ const generateTags = () => {
     }
 
     const tagsParams = calculateTagsParams(allTags);
-    const tagLinkClass = calculateTagClass(allTags[tag], tagsParams);
+
 
     for (let tag in allTags) {
-        allTagsHtml += `<li><a href="#tag-${tag}" class="${tagLinkClass}">${tag} (${allTags[tag]})</a></li>`;
+        const tagLinkClass = calculateTagClass(allTags[tag], tagsParams);
+        allTagsHtml += `<li><a href="#tag-${tag}" class="${optCloudClassPrefix}${tagLinkClass}">${tag} (${allTags[tag]})</a></li>`;
     }
     tagList.innerHTML = allTagsHtml;
 };
