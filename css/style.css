@@ -131,6 +131,7 @@ body {
 
 .tag-size-2 {
   font-size: 16px;
+  font-style: italic;
 }
 
 .tag-size-3 {
@@ -139,11 +140,13 @@ body {
 
 .tag-size-4 {
   font-size: 24px;
-  font-style: bold;
 }
 
 .tag-size-5 {
   font-size: 28px;
-  font-style: bold;
+}
+
+.tag-size-6 {
+  font-size: 32px;
 }
 /*# sourceMappingURL=style.css.map */
