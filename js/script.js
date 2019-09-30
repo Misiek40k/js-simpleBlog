@@ -13,6 +13,10 @@ const opt = {
     listItemClass: 'item',
 };
 
+const templates = {
+    // eslint-disable-next-line no-undef
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+};
 
 function titleClickHandler(event) {
 
@@ -47,7 +51,8 @@ const generateTitleLinks = (customselector = '') => {
     for (let article of articles) {
         const articleId = article.getAttribute('id');
         const articleTitle = article.querySelector(opt.titleSelector).innerHTML;
-        const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
+        const linkHTMLData = {id: articleId, title: articleTitle};
+        const linkHTML = templates.articleLink(linkHTMLData);
         html += linkHTML;
     }
 
