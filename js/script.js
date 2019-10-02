@@ -106,7 +106,7 @@ const generateTags = () => {
             const tagHtml = templates.articleListItem(tagHtmlData);
             html += `${tagHtml} `;
 
-            (!Object.prototype.hasOwnProperty.call(allTags, tag)) ? (allTags[tag] = 1) : (allTags[tag]++);
+            (!allTags[tag]) ? (allTags[tag] = 1) : (allTags[tag]++);
         }
         articleTags.innerHTML = html;
     }
